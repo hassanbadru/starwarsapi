@@ -3,6 +3,7 @@ import urllib.parse
 import json
 import csv
 import os
+import requests
 
 # use api end point to fetch data + validate url
 def fetch_url(endpoint):
@@ -83,3 +84,14 @@ def string_to_float(numeric_string):
         pass
 
     return height
+
+
+# send csv to httpbin
+def send_csv(csv_file="characters.csv"):
+    url = 'https://httpbin.org/post'
+    try:
+        file_data = {'file': (f'{csv_file}', open(f'output/{csv_file}', 'rb'), 'text/csv')}
+    except FileNotFoundError:
+        return None
+
+    return requests.post(url, files=file_data)

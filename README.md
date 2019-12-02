@@ -61,12 +61,13 @@ Sample Test output
 platform darwin -- Python 3.7.3, pytest-5.3.1, py-1.8.0, pluggy-0.13.1 -- /path/to/yougovenv/bin/python3
 cachedir: .pytest_cache
 rootdir: /path/to/solution
-collected 5 items                                                                                                                                                                   
+collected 6 items                                                                                                                                                                   
 
-test_yougov.py::test_float_conv PASSED                                                                                                                                        [ 20%]
-test_yougov.py::test_endpoint PASSED                                                                                                                                          [ 40%]
-test_yougov.py::test_csv PASSED                                                                                                                                               [ 60%]
-test_yougov.py::test_species PASSED                                                                                                                                           [ 80%]
+test_yougov.py::test_float_conv PASSED                                                                                                                                        [ 16%]
+test_yougov.py::test_endpoint PASSED                                                                                                                                          [ 33%]
+test_yougov.py::test_get_csv PASSED                                                                                                                                           [ 50%]
+test_yougov.py::test_species PASSED                                                                                                                                           [ 66%]
+test_yougov.py::test_send_csv PASSED                                                                                                                                          [ 83%]
 test_yougov.py::test_solution PASSED                                                                                                                                          [100%]
 
 ================================================================================ 5 passed in 25.03s =================================================================================
@@ -88,14 +89,16 @@ test_yougov.py::test_solution PASSED                                            
 - Sort list of characters in descending order of appearance and slice to extract the top 10
 - Take top 10 most appearances and sorts by height (tallest to shortest)
 - Store as  name, species, height, appearances values as fields / records in a CSV file
+- Create a POST request to send CSV file
 
 ### Custom Modules
-- fetch_url() - extracts data from endpoint
-- get_species() - gets name of species from endpoint
-- produce_csv() - produces csv of the format 'name, species, height, appearances'
-- get_characters() - fetches all the characters from all endpoint pages
-- string_to_float() - converts any numeric string to float
-- find_characters() - produces list of solution after sorting by height
+- **fetch_url()** - extracts data from endpoint
+- **get_species()** - gets name of species from endpoint
+- **get_characters()** - fetches all the characters from all endpoint pages
+- **string_to_float()** - converts any numeric string to float
+- **find_characters()** - produces list of solution after sorting by height
+- **produce_csv()** - produces csv of the format 'name, species, height, appearances'
+- **send_csv** - sends csv using POST to httpbin
 
 
 ### Assumptions

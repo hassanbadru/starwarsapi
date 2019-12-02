@@ -1,6 +1,6 @@
 import pytest
 import json
-from helpers import fetch_url, get_species, produce_csv, get_characters, string_to_float
+from helpers import fetch_url, get_species, produce_csv, get_characters, string_to_float, send_csv
 from yougov import find_characters
 
 
@@ -20,7 +20,7 @@ def test_endpoint():
     assert fetch_url("https://swapi.co/api/people/").get("count") == 87
     assert fetch_url("https://swapi.co/api/starships/9/") == starship_data
 
-def test_csv():
+def test_get_csv():
     assert produce_csv([{"name": "a", "species": "b", "appearances": 1, "height": 20}], "test.csv") == True
     assert produce_csv([{"name": "a", "species": "b", "appearances": 1, "height": 20}], "test/test.csv") == False
     assert produce_csv(None, "test.csv") == False
@@ -28,6 +28,10 @@ def test_csv():
 def test_species():
     assert get_species("bad url") == None
     assert get_species("https://swapi.co/api/species/1/") == "Human"
+
+def test_send_csv():
+    assert send_csv("test.csv").status_code == 200
+    assert send_csv("bad file name") == None
 
 def test_solution():
     assert find_characters('bad url') == []
