@@ -1,9 +1,7 @@
 # Hassan Badru
 ### YouGov - Starwars API
 
-## Libraries
-- [x] PYTEST
-
+## Solution
 ### Install Virtual Environment
 With Python 3, run the following command to create a new virtual environment
 ```bash
@@ -13,9 +11,7 @@ Activate the new virtual environment
 ```bash
 source '[ENVIRONMENT NAME]/bin/activate'
 ```
-## Solution
-Navigate to project folder
-### Root Folder
+Navigate to project root folder
 ```
 solution
     ├── yougov.py
@@ -52,13 +48,14 @@ $ results csv produced
 This solution would produce the file ```characters.csv``` and add this file to **output** folder within the root directory. **output** folder is created if it doesn't  exist.
 
 
-
-## Test App
+### Testing
+#### Packages
+- [x] PyTest
 To run test:
 ```bash
 py.test -vv
 ```
-Sample Test
+Sample Test output
 ```
 platform darwin -- Python 3.7.3, pytest-5.3.1, py-1.8.0, pluggy-0.13.1 -- /path/to/yougovenv/bin/python3
 cachedir: .pytest_cache
@@ -92,12 +89,12 @@ test_yougov.py::test_solution PASSED                                            
 - Store as  name, species, height, appearances values as fields / records in a CSV file
 
 ### Using a custom (helpers) module
-fetch_url() - extracts data from endpoint
-get_species() - gets name of species from endpoint
-produce_csv() - produces csv of the format 'name, species, height, appearances'
-get_characters() - fetches all the characters from all endpoint pages
-string_to_float() - converts any numeric string to float
-find_characters() - produces list of solution after sorting by height
+- fetch_url() - extracts data from endpoint
+- get_species() - gets name of species from endpoint
+- produce_csv() - produces csv of the format 'name, species, height, appearances'
+- get_characters() - fetches all the characters from all endpoint pages
+- string_to_float() - converts any numeric string to float
+- find_characters() - produces list of solution after sorting by height
 
 
 ### Assumptions
