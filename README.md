@@ -5,11 +5,11 @@
 ### Install Virtual Environment
 With Python 3, run the following command to create a new virtual environment
 ```bash
-python3 -m venv [ENVIRONMENT NAME]
+python3 -m venv /path/to/[ENVIRONMENT NAME]
 ```
 Activate the new virtual environment
 ```bash
-source '[ENVIRONMENT NAME]/bin/activate'
+source 'path/to/[ENVIRONMENT NAME]/bin/activate'
 ```
 Navigate to project root folder
 ```
@@ -71,7 +71,7 @@ test_yougov.py::test_solution PASSED                                            
 ================================================================================ 5 passed in 25.03s =================================================================================
 
 ```
-
+ or simply run ```pytest ```
 
 ## Functionality
 - [x] Finds characters who appear in the most Star Wars films
@@ -88,7 +88,7 @@ test_yougov.py::test_solution PASSED                                            
 - Take top 10 most appearances and sorts by height (tallest to shortest)
 - Store as  name, species, height, appearances values as fields / records in a CSV file
 
-### Using a custom (helpers) module
+### Custom Modules
 - fetch_url() - extracts data from endpoint
 - get_species() - gets name of species from endpoint
 - produce_csv() - produces csv of the format 'name, species, height, appearances'
