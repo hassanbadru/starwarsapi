@@ -1,23 +1,28 @@
 import operator
 from helpers import get_species, produce_csv, get_characters, string_to_float
 
-# species loading cache
-# N/A for no species
-# 0.0 float for unknown heights
 # Sort characters by appearances, then by height in descending order (i.e., tallest first)
 def find_characters(endpoint):
     results = get_characters(endpoint)
     new_results = []
+    species_cache = {} # use cache of loading species details
 
     for r in results:
         name = r.get("name")
+
         species = 'N/A'
-
         species_endpoints = r.get("species")
-        if len(species_endpoints) > 0:
-            species = get_species(species_endpoints[0])
 
-        url = r.get("url")
+        if species_endpoints and len(species_endpoints) > 0:
+            species_endpoints = species_endpoints[0]
+            # check if species exists in cache, if so, use name value instead
+            species = species_cache.get(species_endpoints, None)
+            if not species:
+                species = get_species(species_endpoints)
+                species_cache[species_endpoints] = species
+
+
+
         appearances = len(r.get("films"))
         height = r.get("height")
 
@@ -32,11 +37,6 @@ def find_characters(endpoint):
 
 
 results = find_characters('https://swapi.co/api/people/')
+# if result exists, produce csv of result
 if results:
     produce_csv(results)
-
-
-
-#4 - Send the CSV to httpbin.org
-#5 - Create automated tests that validate your code
-# pip install pytest
