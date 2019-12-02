@@ -35,6 +35,9 @@ Use pip to install the necessary dependencies with requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
+#### Packages
+- [x] Requests
+- [x] PyTest
 
 ### Run solution
 ```bash
@@ -49,8 +52,6 @@ This solution would produce the file ```characters.csv``` and add this file to *
 
 
 ### Testing
-#### Packages
-- [x] PyTest
 To run test:
 ```bash
 py.test -vv

@@ -1,5 +1,6 @@
 import operator
 from helpers import get_species, produce_csv, get_characters, string_to_float
+import requests
 
 # Sort characters by appearances, then by height in descending order (i.e., tallest first)
 def find_characters(endpoint):
@@ -38,5 +39,13 @@ def find_characters(endpoint):
 
 results = find_characters('https://swapi.co/api/people/')
 # if result exists, produce csv of result
+saved = False
 if results:
-    produce_csv(results)
+    saved = produce_csv(results)
+
+# send to httpbin if csv file is successfully saved
+if saved:
+    url = 'https://httpbin.org/post'
+    file_data = {'file': ('characters.csv', open('output/characters.csv', 'rb'), 'text/csv')}
+
+    response = requests.post(url, files=file_data)
